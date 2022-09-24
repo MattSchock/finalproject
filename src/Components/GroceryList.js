@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import GroceryListApi  from "../Rest/GroceryListApi";
+import GroceryListApi  from "../Rest/GeneralApi";
 import GroceryItem from "./GroceryItem";
+import GroceryForm from "./GroceryForm";
 
 
 export default class GroceryList extends React.Component {
@@ -19,10 +20,24 @@ export default class GroceryList extends React.Component {
         this.fetchGrocery();
     }
 
+    
+
 
     render() {
         return (
             <div>
+                {/* Grocery items needed.
+                <br></br>
+                <form onSubmit={placeholderonsubmit}>
+                    <input
+                        type="text"
+                        placeholder="grocery item goes here"
+                        value={groceryName}
+                        />
+                    <button type="submit">Add grocery item.</button>
+                </form> */}
+
+
 
                 {this.state.groceryItems.map((groceryItem, index) => {
                     return (
@@ -38,6 +53,74 @@ export default class GroceryList extends React.Component {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect } from "react";
+// import GroceryListApi  from "../Rest/GroceryListApi";
+// import GroceryItem from "./GroceryItem";
+
+
+// export default class GroceryList extends React.Component {
+//     state = {
+//         id: 0,
+//         groceryItems: []
+//     };
+
+
+//     fetchGrocery = async() => {
+//         const groceryItems = await GroceryListApi.get();
+//         this.setState(groceryItems)
+//     }
+
+//     componentDidMount() {
+//         this.fetchGrocery();
+//     }
+
+
+//     render() {
+//         return (
+//             <div>
+
+//                 {this.state.groceryItems.map((groceryItem, index) => {
+//                     return (
+//                         <GroceryItem
+//                             groceryItem={groceryItem}
+//                             key={index}
+//                         />
+//                     )
+//                 })}
+
+//             </div>
+//         )
+//     }
+
+// }
 
 
 

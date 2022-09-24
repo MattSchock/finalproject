@@ -1,40 +1,51 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table';
+import { useEffect, useState } from 'react';
+import Todoitem from './Todoitem';
+
+import EditForm from './EditForm';
+import TodoItem from './Todoitem';
+import ToDoApi from '../Rest/GeneralApi';
+
+export default class ToDoList extends React.Component {
+    state = {
+        todoitems: []
+    };
+
+    componentDidMount() {
+        this.fetchToDoItems();
+    };
+
+    fetchToDoItems = async() => {
+        const todoitems = await ToDoApi.get();
+        this.setState({ todoitems });
+    };
+
+    updateToDoItem = async (updatedToDoItem) => {
+        await ToDoApi.put(updatedToDoItem);
+        this.fetchToDoItems();
+    };
+
+    render() {
+        return (
+            <div>
+                <form>
+                    <input placeholder="enter task">
+                    </input>
+                    <button type='submit'>Add</button>
+                </form>
+                <div>
+                    
+                    {this.state.todoitems.map((todoitem) => (
+                        <TodoItem
+                            todoitem={todoitem}
+                            key={todoitem._id}
+                            updateToDoItem={this.updateToDoItem}
+                        />
+                    ))}
+                </div>
+            </div>
+        )
+    }
 
 
-
-function ToDoList() {
-  return (
-    <Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
 }
-
-export default ToDoList;
