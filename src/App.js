@@ -15,7 +15,7 @@ function App() {
       <NavBar/>
       <Routes>
         <Route path="todolistpath" element={<ToDoList2/>}></Route>
-        <Route path="grocerylistpath" element={<><GroceryList/></>}></Route>
+        <Route path="grocerylistpath" ></Route>
         <Route path="chorespath"></Route>
         <Route path="schedulepath"></Route>
         <Route path="generalshoppingpath"></Route>

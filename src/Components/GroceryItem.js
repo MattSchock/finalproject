@@ -4,9 +4,9 @@ class GroceryItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            GroceryList: this.props.GroceryList,
+           
             GroceryItemName: this.props.GroceryItemName,
-            Id: this.props.id,
+            id: this.props.id,
         };
     }
 
@@ -18,7 +18,7 @@ class GroceryItem extends React.Component {
                     {this.state.GroceryItemName}
                 </td>
                 <td>
-                    Placeholder.
+                    Testing placeholder
                 </td>
             </tr>
         )
