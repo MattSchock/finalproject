@@ -12,10 +12,9 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="todolistpath">To Do List</Nav.Link>
             <Nav.Link as={Link} to="grocerylistpath">Grocery List</Nav.Link>
-            <Nav.Link as={Link} to="schedulepath">Schedule</Nav.Link>
-            <Nav.Link as={Link} to="generalshoppingpath">General Shopping List</Nav.Link>
-            <Nav.Link as={Link} to="chorespath">Chores</Nav.Link>
-            <Nav.Link as={Link} to="deepcleaningpath">Deep-Cleaning</Nav.Link>
+            
+            
+            
           </Nav>
         </Container>
       </Navbar>

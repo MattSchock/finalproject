@@ -1,51 +1,43 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import Todoitem from './Todoitem';
+import { Customer } from './Todo'
+import { customerApi } from '../Rest/ToDoListApi';
 
-import EditForm from './EditForm';
-import TodoItem from './Todoitem';
-import ToDoApi from '../Rest/GeneralApi';
+export default class CustomerList extends React.Component {
+   state = {
+       customers: []
+   };
+// grabs customers from api
+   componentDidMount() {
+       this.fetchCustomers();
+   };
+// grabs customers from api part 2
+   fetchCustomers = async() => {
+       const customers = await customerApi.get();
+       this.setState({ customers });
+   };
+// updates sales if customer object changes
+   updateCustomer = async (updatedCustomer) => {
+       await customerApi.put(updatedCustomer);
+       this.fetchCustomers();
+   };
 
-export default class ToDoList extends React.Component {
-    state = {
-        todoitems: []
-    };
-
-    componentDidMount() {
-        this.fetchToDoItems();
-    };
-
-    fetchToDoItems = async() => {
-        const todoitems = await ToDoApi.get();
-        this.setState({ todoitems });
-    };
-
-    updateToDoItem = async (updatedToDoItem) => {
-        await ToDoApi.put(updatedToDoItem);
-        this.fetchToDoItems();
-    };
-
-    render() {
-        return (
-            <div>
-                <form>
-                    <input placeholder="enter task">
-                    </input>
-                    <button type='submit'>Add</button>
-                </form>
-                <div>
-                    
-                    {this.state.todoitems.map((todoitem) => (
-                        <TodoItem
-                            todoitem={todoitem}
-                            key={todoitem._id}
-                            updateToDoItem={this.updateToDoItem}
-                        />
-                    ))}
-                </div>
-            </div>
-        )
-    }
+   render() {
+       return(
+           <div className='customer-list'>
+               
+               {this.state.customers.map((customer) => (
+                   <Customer 
+                   customer={customer}
+                   key={customer._id}
+                   updateCustomer={this.updateCustomer}
+                   
+                   />
+                   
+               ))}
+               
+           </div>
+       )
+   }
 
 
 }

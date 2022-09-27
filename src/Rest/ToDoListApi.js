@@ -1,10 +1,10 @@
-const API_ENDPOINT_GROCERYLIST = "https://62fd71deb9e38585cd51f570.mockapi.io/grocerylist";
+const API_ENDPOINT = "https://62fd71deb9e38585cd51f570.mockapi.io/customersales";
 
 
-class GroceryListApi {
+class CustomerApi {
     get = async () => {
         try{
-            const resp = await fetch(API_ENDPOINT_GROCERYLIST);
+            const resp = await fetch(API_ENDPOINT);
             const data = await resp.json();
             return data;
         } catch (e) {
@@ -15,7 +15,7 @@ class GroceryListApi {
     put = async(customer) => {
         console.log('customerapiputrequest', customer);
         try {
-            const resp = await fetch(`${API_ENDPOINT_GROCERYLIST}/${customer._id}`, {
+            const resp = await fetch(`${API_ENDPOINT}/${customer._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'
@@ -40,7 +40,7 @@ class GroceryListApi {
                 customer.sales.splice(customer.sales[i], 1);
 
                 try {
-                    const resp = await fetch(`${API_ENDPOINT_GROCERYLIST}/${customer._id}`, {
+                    const resp = await fetch(`${API_ENDPOINT}/${customer._id}`, {
                         method: 'PUT',
                         headers: {
                             'Content-type': 'application/json'
@@ -72,4 +72,4 @@ class GroceryListApi {
 
 }
 
-export const groceryListApi = new GroceryListApi
+export const customerApi = new CustomerApi
