@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import CustomerList from './Components/ToDoList';
 import GroceryList from './Components/GroceryList';
+import Homepage from './Components/Home';
 import NavBar from './Components/NavBar';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route} from 'react-router-dom';
@@ -14,10 +15,9 @@ function App() {
     <div className="App">
       <NavBar/>
       <Routes>
+        <Route path="homepath" element={<Homepage/>}></Route>
         <Route path="todolistpath" element={<CustomerList/>}></Route>
         <Route path="grocerylistpath" element={<GroceryList/>}></Route>
-        
-
       </Routes>
     </div>
   );
